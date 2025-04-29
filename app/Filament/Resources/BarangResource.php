@@ -13,6 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\TextColumn;
+
 class BarangResource extends Resource
 {
     protected static ?string $model = Barang::class;
@@ -23,7 +26,9 @@ class BarangResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('nama_barang'),
+                TextInput::make('kode_barang'),
+                TextInput::make('harga_barang'),
             ]);
     }
 
@@ -31,13 +36,16 @@ class BarangResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('nama_barang'),
+                TextColumn::make('harga_barang'),
+                TextColumn::make('kode_barang')
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
