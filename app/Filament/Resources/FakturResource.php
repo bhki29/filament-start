@@ -18,6 +18,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\TextArea;
 
 class FakturResource extends Resource
 {
@@ -29,33 +30,118 @@ class FakturResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('kode_faktur'),
-                DatePicker::make('tanggal_faktur'),
-                TextInput::make('kode_customer'),
+                TextInput::make('kode_faktur')
+                ->columnSpan(2),
+                DatePicker::make('tanggal_faktur')
+                ->columnSpan([
+                    'default' => 2,
+                    'md' => 1,
+                    'lg' => 1,
+                    'xl' => 1,
+                ]),
                 Select::make('customer_id')
-                ->relationship('customer', 'nama_customer'),
+                ->relationship('customer', 'nama_customer')
+                ->columnSpan([
+                    'default' => 2,
+                    'md' => 1,
+                    'lg' => 1,
+                    'xl' => 1,
+                ]),
+                TextInput::make('kode_customer')
+                ->columnSpan(2),
+
                 Repeater::make('detail')
                 ->relationship()
                 ->schema([
                     Select::make('barang_id')
+                        ->columnSpan([
+                        'default' => 2,
+                        'md' => 1,
+                        'lg' => 1,
+                        'xl' => 1,
+                    ])
                         ->relationship('barang', 'nama_barang'),
-                    TextInput::make('diskon')
-                        ->numeric(),
-                    TextInput::make('nama_barang'),
+
+                    TextInput::make('nama_barang')
+                        ->columnSpan([
+                        'default' => 2,
+                        'md' => 1,
+                        'lg' => 1,
+                        'xl' => 1,
+                    ]),
+
                     TextInput::make('harga')
+                        ->columnSpan([
+                        'default' => 2,
+                        'md' => 1,
+                        'lg' => 1,
+                        'xl' => 1,
+                    ])
                         ->numeric(),
-                    TextInput::make('subtotal')
-                        ->numeric(),
+
                     TextInput::make('qty')
+                        ->columnSpan([
+                        'default' => 2,
+                        'md' => 1,
+                        'lg' => 1,
+                        'xl' => 1,
+                    ])
                         ->numeric(),
+
                     TextInput::make('hasil_qty')
+                        ->columnSpan([
+                        'default' => 2,
+                        'md' => 1,
+                        'lg' => 1,
+                        'xl' => 1,
+                    ])
+                            ->numeric(),
+
+                    TextInput::make('diskon')
+                        ->columnSpan([
+                        'default' => 2,
+                        'md' => 1,
+                        'lg' => 1,
+                        'xl' => 1,
+                    ])
                         ->numeric(),
+                    
+                    TextInput::make('subtotal')
+                        ->columnSpan([
+                        'default' => 2,
+                        'md' => 1,
+                        'lg' => 1,
+                        'xl' => 1,
+                    ])
+                        ->numeric(),
+                ])
+                    ->columnSpan(2),
+
+                TextArea::make('ket_faktur')
+                    ->columnSpan(2),
+
+                TextInput::make('total')
+                    ->columnSpan([
+                    'default' => 2,
+                    'md' => 1,
+                    'lg' => 1,
+                    'xl' => 1,
+                ])
+                ->columnSpan(2),
+
+                TextInput::make('nominal_charge')
+                ->columnSpan([
+                    'default' => 2,
+                    'md' => 1,
+                    'lg' => 1,
+                    'xl' => 1,
                 ]),
-                TextInput::make('ket_faktur'),
-                TextInput::make('total'),
-                TextInput::make('nominal_charge'),
-                TextInput::make('charge'),
-                TextInput::make('total_final'),
+
+                TextInput::make('charge')
+                ->columnSpan(2),
+
+                TextInput::make('total_final')
+                ->columnSpan(2),
             ]);
     }
 
