@@ -22,14 +22,14 @@ class CustomerResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-    protected static ?string $navigationGroup = 'Materi';
+    protected static ?string $navigationGroup = 'Kelola';
 
-    protected static ?string $navigationLabel = 'Ilmu Pengetahuan Alam';
+    protected static ?string $navigationLabel = 'Kelola Customer';
 
-    protected static ?string $slug = 'Ilmu-Pengetahuan-Alam';
+    protected static ?string $slug = 'kelola-customer';
 
-    public static ?string $label = 'Ilmu Pengetahuan Alam';
-    
+    public static ?string $label = 'Kelola Customer';
+
     public static function form(Form $form): Form
     {
         return $form
