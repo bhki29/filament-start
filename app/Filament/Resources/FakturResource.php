@@ -17,6 +17,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Repeater;
 
 class FakturResource extends Resource
 {
@@ -33,6 +34,23 @@ class FakturResource extends Resource
                 TextInput::make('kode_customer'),
                 Select::make('customer_id')
                 ->relationship('customer', 'nama_customer'),
+                Repeater::make('detail')
+                ->relationship()
+                ->schema([
+                    Select::make('barang_id')
+                        ->relationship('barang', 'nama_barang'),
+                    TextInput::make('diskon')
+                        ->numeric(),
+                    TextInput::make('nama_barang'),
+                    TextInput::make('harga')
+                        ->numeric(),
+                    TextInput::make('subtotal')
+                        ->numeric(),
+                    TextInput::make('qty')
+                        ->numeric(),
+                    TextInput::make('hasil_qty')
+                        ->numeric(),
+                ]),
                 TextInput::make('ket_faktur'),
                 TextInput::make('total'),
                 TextInput::make('nominal_charge'),
@@ -48,7 +66,7 @@ class FakturResource extends Resource
                 TextColumn::make('kode_faktur'),
                 TextColumn::make('tanggal_faktur'),
                 TextColumn::make('kode_customer'),
-                TextColumn::make('customer_id'),
+                TextColumn::make('customer.nama_customer'),
                 TextColumn::make('ket_faktur'),
                 TextColumn::make('total'),
                 TextColumn::make('nominal_charge'),
