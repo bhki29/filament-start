@@ -61,11 +61,6 @@ class PenjualanResource extends Resource
                 ->sortable()
                 ->searchable()
                 ->badge(),
-                TextColumn::make('jenis')
-                ->label('Jenis')
-                ->sortable()
-                ->searchable()
-                ->badge(),
             ])
             ->filters([
                 //
