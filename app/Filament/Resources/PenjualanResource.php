@@ -60,7 +60,12 @@ class PenjualanResource extends Resource
                 ->label('Status')
                 ->sortable()
                 ->searchable()
-                ->badge(),
+                ->badge()
+                ->color(fn (string $state): string => match ($state) {
+                '0' => 'danger',
+                '1' => 'info',
+            })
+            ->formatStateUsing(fn (PenjualanModel $record): string => $record->status == 0 ? 'Belum Lunas' : 'Lunas') ,
             ])
             ->filters([
                 //
